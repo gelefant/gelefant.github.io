@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giacomo Elefante - PhD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the active navigation link */
+        .nav-link.active {
+            color: #1D4ED8; /* A deep blue color */
+            font-weight: 500;
+            border-bottom: 2px solid #1D4ED8;
+        }
+        .nav-link {
+            padding-bottom: 4px;
+        }
+        /* Hide sections by default */
+        .page-section {
+            display: none;
+        }
+        /* Show the active section */
+        .page-section.active {
+            display: block;
+        }
+        /* Ensure the embedded PDF is responsive */
+        .cv-embed {
+            position: relative;
+            padding-bottom: 129.4%; /* Aspect ratio for A4 paper (297/210 * 100) */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .cv-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Style for year headings in publications */
+        .year-heading {
+            font-size: 1.25rem; /* text-xl equivalent */
+            font-weight: 600;
+            color: #374151; /* gray-700 */
+            margin: 1.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #d1d5db; /* gray-300 */
+        }
+        /* Style for the map container */
+        .map-container {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        /* Styles for the abstract dropdown */
+        .abstract-content {
+            display: none; /* Hidden by default */
+            margin-top: 0.75rem;
+            padding: 1rem;
+            background-color: #f3f4f6; /* gray-100 */
+            border-left: 4px solid #1D4ED8; /* blue-700 */
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            color: #4b5563; /* gray-700 */
+            line-height: 1.6;
+            box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1); /* subtle inner shadow */
+            animation: fadeIn 0.3s ease-out; /* Add a fade-in animation */
+        }
+
+        /* Keyframe animation for fading in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .abstract-toggle-button {
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            display: flex; /* Use flexbox for icon alignment */
+            align-items: center;
+            justify-content: space-between; /* Space between title and icon */
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 1.25rem; /* text-xl equivalent */
+            font-weight: 600;
+            color: #1a202c; /* Text color for the title */
+            transition: color 0.2s ease-in-out;
+        }
+        .abstract-toggle-button:hover {
+            color: #2563eb; /* blue-600 */
+        }
+        .abstract-toggle-button .icon {
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .abstract-toggle-button.active .icon {
+            transform: rotate(90deg); /* Rotate icon when active */
+        }
+    </style>
+    <title>MathJax Example</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+    <div class="container mx-auto max-w-4xl px-4 py-8">
+        <!-- Header Section -->
+        <header class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Giacomo Elefante, PhD</h1>
+            <h2 class="text-xl text-gray-600 mt-1">IDSIA - USI Lugano</h2>
+        </header>
+
+        <!-- Navigation Bar -->
+        <nav class="mb-10 border-b border-gray-200">
+            <ul class="flex justify-center space-x-4 sm:space-x-8 -mb-px">
+                <li><a href="#home" class="nav-link text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
+                <li><a href="#publications" class="nav-link text-gray-700 hover:text-blue-600 transition duration-300">Publications</a></li>
+                <li><a href="#cv" class="nav-link text-gray-700 hover:text-blue-600 transition duration-300">CV</a></li>
+                <li><a href="#miscellanea" class="nav-link text-gray-700 hover:text-blue-600 transition duration-300">Miscellanea</a></li>
+                <li><a href="#about" class="nav-link text-gray-700 hover:text-blue-600 transition duration-300">About Me</a></li>
+            </ul>
+        </nav>
+
+        <!-- Social Media Icons Section -->
+        <div class="flex justify-center space-x-6 mb-10">
+            <a href="https://github.com/gelefant" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300">
+                <i class="fab fa-github text-2xl"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=Lk4m5o4AAAAJ" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300">
+                <i class="fas fa-graduation-cap text-2xl"></i> <!-- Google Scholar icon -->
+            </a>
+            <a href="https://www.researchgate.net/profile/Giacomo-Elefante" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300">
+                <i class="fab fa-researchgate text-2xl"></i> <!-- ResearchGate icon, if available, otherwise consider generic science icon -->
+            </a>
+            <a href="https://orcid.org/0000-0001-5576-6802" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300">
+                <i class="fab fa-orcid text-2xl"></i> <!-- ORCID icon - assuming a custom CSS or another icon library for academic icons if not in FontAwesome -->
+            </a>
+            <a href="https://www.scopus.com/authid/detail.uri?authorId=57192073035" target="_blank" class="text-gray-500 hover:text-gray-700 transition duration-300">
+                <i class="fas fa-search text-2xl"></i> <!-- Scopus icon -->
+            </a>
+        </div>
+
+        <main id="main-content">
+            <!-- Home Section with Photo and Conferences -->
+            <section id="home" class="page-section">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <!-- Welcome part -->
+                    <div class="flex flex-col sm:flex-row gap-8 items-center">
+                        <div class="sm:w-1/3 flex-shrink-0">
+                            <!-- Placeholder image. Replace this URL with your direct Google Drive image link -->
+                            <img src="https://github.com/gelefant/gelefant.github.io/blob/main/me-removebg-preview.png?raw=true" alt="GE" class="rounded-lg shadow-md w-full max-w-xs mx-auto">
+                        </div>
+                        <div class="sm:w-2/3">
+                             <h2 class="text-2xl font-bold mb-4">Welcome!</h2>
+                            <p class="text-lg">
+                                I am PostDoc at the University of Italian Switzerland (CH) under the supervision of Prof. Michael Multerer.
+							</p>
+							<p class="text-lg">	
+								I have been PostDoc at the University of Torino (IT) (supervisor Prof. Roberto Cavoretto), at the University of Padova (IT) (Supervisor Prof. Alvise Sommariva and before supervisor  Prof. Fabio Marcuzzi) and at the University of Chieti-Pescara (IT) (supervisor Prof. Maria Laura De Bellis). I did my PhD at the University of Fribourg (CH), under the supervision of Prof. Jean-Paul Berrut.
+							</p>
+							<p class="text-lg">	
+								My research interest is in numerical analysis and I worked on barycentric rational interpolation, polynomial interpolation and QMC methods. 
+                            </p>
+                            <p class="mt-4 text-lg">
+                                Visit the publication page and my other profiles for further information on my research! 
+							</p>
+							<p class="text-lg">	
+								My <a href="https://oakland.edu/enp/readme/" class="text-blue-600 hover:underline">Erdös number</a> is 3.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <hr class="my-8 border-gray-200">
+
+                    <!-- Conferences part -->
+                    <div>
+                        <h2 class="text-2xl font-bold mb-6 text-center">Conferences</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3">Upcoming Conferences</h3>
+                                <div class="space-y-2">
+                                    <p>
+                                        <strong>2025:</strong> NumPDE Summer Retreat 2025<br>
+                                        <span class="pl-12">Disentis (CH), 9 - 11 July 2025.</span>
+                                    </p>
+                                    <p>
+                                        <strong>2025:</strong> <a href="https://simai2025.cimne.com/" target="_blank" class="text-blue-600 hover:underline">SIMAI 2025</a><br>
+                                        <span class="pl-12">Trieste (IT), 01 - 05 September 2025.</span>
+                                    </p>
+                                    <p>
+                                        <strong>2025:</strong> <a href="https://sites.google.com/view/drwaa25/" target="_blank" class="text-blue-600 hover:underline">Dolomites Research Week on Approximation and Applications 2025 (DRWAA25)</a><br>
+                                        <span class="pl-12">Alba di Canazei (IT), 08 - 12 September 2025.</span>
+                                    </p>
+                                    <p>
+                                        <strong>2025:</strong> <a href="https://www.yamc.it/home" target="_blank" class="text-blue-600 hover:underline">Young Applied Mathematicians Conference 25</a><br>
+                                        <span class="pl-12">Padova (IT), 22 - 26 September 2025.</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <!-- This title now links to the new section -->
+                                <h3 class="text-xl font-semibold mb-3">
+                                    <a href="#past-conferences" id="past-conferences-link" class="text-gray-800 hover:text-blue-600 transition-colors duration-300">Recent Past Conferences &raquo;</a>
+                                </h3>
+                                <div class="space-y-2">
+	                                <p>
+                                        <strong>2025:</strong> <a href="https://numericalanalysisconference.org.uk/" target="_blank" class="text-blue-600 hover:underline">The 30th Biennial Numerical Analysis Conference</a><br>
+                                        <span class="pl-12">Glasgow (UK), 24 - 27 June 2025.</span>
+                                    </p>
+                                    <p>
+                                        <strong>2025:</strong> <a href="https://colloqnum25.dmi.unibas.ch/en/" target="_blank" class="text-blue-600 hover:underline">Swiss Numerical Analysis Day 2025</a><br>
+                                        <span class="pl-12">Basel (CH), 3 June 2025.</span>
+                                    </p>
+                                    <p>
+                                        <strong>2025:</strong> <a href="https://my.vanderbilt.edu/constructivefunctions2025/" target="_blank" class="text-blue-600 hover:underline">Constructive Functions 2025</a><br>
+                                        <span class="pl-12">Nashville (US), 19 - 22 May 2025.</span>
+                                    </p>            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- New Past Conferences Section (hidden from nav) -->
+            <section id="past-conferences" class="page-section">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Past Conferences Archive</h2>
+                    <p class="mb-6">A complete list of all past conferences I have attended or presented at.</p>
+                    <div class="space-y-4">
+                        <hr>
+                        <p>
+                            <strong>2025:</strong> <a href="https://numericalanalysisconference.org.uk/" target="_blank" class="text-blue-600 hover:underline">The 30th Biennial Numerical Analysis Conference</a><br>
+                            <span class="pl-12">Glasgow (UK), 24 - 27 June 2025.</span>
+                        </p>
+                        <p>
+                            <strong>2025:</strong> <a href="https://colloqnum25.dmi.unibas.ch/en/" target="_blank" class="text-blue-600 hover:underline">Swiss Numerical Analysis Day 2025</a><br>
+                            <span class="pl-12">Basel (CH), 3 June 2025.</span>
+                        </p>
+                        <p>
+                            <strong>2025:</strong> <a href="https://my.vanderbilt.edu/constructivefunctions2025/" target="_blank" class="text-blue-600 hover:underline">Constructive Functions 2025</a><br>
+                            <span class="pl-12">Nashville (US), 19 - 22 May 2025.</span>
+                        </p>
+                        <p>
+                            <strong>2025:</strong> <a href="https://sites.google.com/view/sa2025" target="_blank" class="text-blue-600 hover:underline">Software for Approximation 2025 (SA25)</a><br>
+                            <span class="pl-12">Torino (IT), 05 - 07 February 2025.</span>
+                        </p>
+                        <p>
+                            <strong>2025:</strong> <a href="https://www.uu.se/en/department/information-technology/research/computational-science/bit-conference" target="_blank" class="text-blue-600 hover:underline">BIT'65</a><br>
+                            <span class="pl-12">Uppsala (SE), 14 - 16 January 2025.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2024:</strong> <a href="https://sites.google.com/unifi.it/cime/c-i-m-e-courses/c-i-m-e-courses-2024/high-dimensional-approximation-from-theoretical-foundations-to-machine-lea?authuser=0" target="_blank" class="text-blue-600 hover:underline">C.I.M.E. School - "High-Dimensional Approximation: From Theoretical Foundations to Machine Learning and PDEs"</a><br>
+                            <span class="pl-12">Cetraro (IT), 23 - 27 September 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://sites.google.com/view/namas-24" target="_blank" class="text-blue-600 hover:underline">Numerical Analysis & Modelling in Applied Sciences (NAMAS24)</a><br>
+                            <span class="pl-12">Gaeta (IT), 16 - 20 September 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://sites.google.com/view/dwcaa24/" target="_blank" class="text-blue-600 hover:underline">6th Dolomites Workshop on Constructive Approximation and Applications (DWCAA24)</a><br>
+                            <span class="pl-12">Alba di Canazei (IT), 09 - 13 September 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://umi.dm.unibo.it/jm-umi-ams/" target="_blank" class="text-blue-600 hover:underline">Joint Meeting UMI-AMS</a><br>
+                            <span class="pl-12">Palermo (IT), 23 - 26 July 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://sites.google.com/view/gsyw24/home-page?authuser=0" target="_blank" class="text-blue-600 hover:underline">GIMC SIMAI YOUNG 2024</a><br>
+                            <span class="pl-12">Napoli (IT), 10 - 12 July 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://conference.unisalento.it/ocs/index.php/atma2024/atma2024" target="_blank" class="text-blue-600 hover:underline">Approximation: Theory, Methods and Applications (ATMA24)</a><br>
+                            <span class="pl-12">Lecce (IT), 11 - 14 June 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> <a href="https://icerm.brown.edu/topical_workshops/tw-24-opd/" target="_blank" class="text-blue-600 hover:underline">Recent Progress on Optimal Point Distributions and Related Fields</a><br>
+                            <span class="pl-12">Providence (US), 03 - 07 June 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> Convegno Gruppo Nazionale di Calcolo Scientifico 2024<br>
+                            <span class="pl-12">Rimini (IT), 14 - 16 February 2024.</span>
+                        </p>
+                        <p>
+                            <strong>2024:</strong> RITA Young Researchers Meeting 2024<br>
+                            <span class="pl-12">online, 18 - 19 January, 2024.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2023:</strong> <a href="https://sites.google.com/view/drwaa23/" target="_blank" class="text-blue-600 hover:underline">Dolomites Research Week on Approximation and Applications (DRWAA23)</a><br>
+                            <span class="pl-12">San Vito di Cadore (IT), 15 - 19 September 2023.</span>
+                        </p>
+                        <p>
+                            <strong>2023:</strong> <a href="https://iciam2023.org/" target="_blank" class="text-blue-600 hover:underline">10th International Congress on Industrial and Applied Mathematics (ICIAM23)</a><br>
+                            <span class="pl-12">Tokyo (JP), 20 - 25 August 2023 - Online.</span>
+                        </p>
+                        <p>
+                            <strong>2023:</strong> <a href="https://umi-taa.sites.dmi.unipg.it/congress_home.html" target="_blank" class="text-blue-600 hover:underline">International Conference on Approximation Theory and Applications</a><br>
+                            <span class="pl-12">Cetraro (IT), 18 - 22 June 2023.</span>
+                        </p>
+                        <p>
+                            <strong>2023:</strong> <a href="https://sites.google.com/view/sa2023torino/home" target="_blank" class="text-blue-600 hover:underline">Software for Approximation (SA2023)</a><br>
+                            <span class="pl-12">Torino (IT), 8 - 10 February 2023.</span>
+                        </p>
+                        <p>
+                            <strong>2023:</strong> <a href="https://sites.google.com/view/atma2023/" target="_blank" class="text-blue-600 hover:underline">Approximation: Theory, Methods and Applications (ATMA 2023)</a><br>
+                            <span class="pl-12">Padova (IT), 18 - 20 January 2023.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2022:</strong> <a href="http://web.unibas.it/faatna22/" target="_blank" class="text-blue-600 hover:underline">Functional Analysis, Approximation Theory and Numerical Analysis (FAATNA 2>22)</a><br>
+                            <span class="pl-12">Matera (IT), July 05 - 08, 2022.</span>
+                        </p>
+                        <p>
+                            <strong>2022:</strong> <a href="https://www.100umi800unipd.it/" target="_blank" class="text-blue-600 hover:underline">100 years UMI - 800 years UniPD</a><br>
+                            <span class="pl-12">Padova (IT), May 23 - 27, 2022.</span>
+                        </p>
+                        <p>
+                            <strong>2022:</strong> <a href="https://sites.google.com/view/sa2022torino/home-page?authuser=0" target="_blank" class="text-blue-600 hover:underline">Software for Approximation (SA2022)</a><br>
+                            <span class="pl-12">Torino (IT), February 03 - 04 , 2022.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2021:</strong> <a href="https://events.math.unipd.it/dwcaa21/" target="_blank" class="text-blue-600 hover:underline">5th Dolomites Workshop on Constructive Approximation and Applications (DWCAA21)</a><br>
+                            <span class="pl-12">online, August 30 - 03 September, 2021.</span>
+                        </p>
+                        <p>
+                            <strong>2021:</strong> <a href="https://www.simai.unipr.it/" target="_blank" class="text-blue-600 hover:underline">Congress of the Italian Society of Applied and Industrial Mathematics (Simai 2020 + 2021)</a><br>
+                            <span class="pl-12">Parma (IT), August 30 - 03 September, 2021.</span>
+                        </p>
+                        <p>
+                            <strong>2021:</strong> Prima giornata di lavoro del gruppo UMI-TAA - [GL(GL)](TAA)<br>
+                            <span class="pl-12">online, May 14, 2021.</span>
+                        </p>
+                        <p>
+                            <strong>2021:</strong> <a href="https://sites.google.com/unifi.it/osna2/home-page" target="_blank" class="text-blue-600 hover:underline">Online Seminars on Numerical Approximation and Applications (OSNA22020)</a><br>
+                            <span class="pl-12">online, April 9 - 12 - 20 - 28, 2021.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2020:</strong> Online Seminars on Numerical Approximation and Applications (OSNA22020)<br>
+                            <span class="pl-12"> online, November 9 - 17 - 25 December 3, 2020.</span>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>2019:</strong> Graduate Colloquium 2019<br>
+                            <span class="pl-12">Genève (CH), November 18 - 20, 2019.</span>
+                        </p>
+                        <p>
+                            <strong>2019:</strong> <a href="https://events.math.unipd.it/drwa19/" target="_blank" class="text-blue-600 hover:underline">Dolomites Research Week on Approximation (DRWA19)</a><br>
+                            <span class="pl-12">Alba di Canazei (IT), September 02 - 06, 2019.</span>
+                        </p>
+                        <!-- Add more past conferences here -->
+                    </div>
+                    <div class="mt-8">
+                        <a href="#home" class="home-link text-blue-600 hover:underline">&laquo; Back to Home</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Publications Section -->
+            <section id="publications" class="page-section">
+                 <div class="bg-gray-50 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-6">Publications</h2>
+<!---                    <!- 2024 Publications ->
+                    <h3 class="year-heading">2022</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Paper Title 2: A new perspective on Z</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Author D, Author E, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">Proceedings of the International Conference on Noteworthy Science, 789-792.</p>
+                             <a href="#" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="#" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>This is the abstract for Paper Title 2. This paper re-evaluates conventional theories surrounding phenomenon Z, introducing a groundbreaking new perspective. Through rigorous experimentation and data analysis, we demonstrate that previous assumptions may have overlooked crucial factors, leading to a more comprehensive understanding of Z's underlying mechanisms.</p>
+                            </div>
+                        </article>
+                    </div> -->
+                    
+                    <!-- 2026 Publications -->
+                    <h3 class="year-heading">2026</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>An algorithm for the estimation of the segmental Lebesgue constant</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Ludovico Bruni Bruno, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">J. Comput. Appl. Math. 471 (2026), 116745.</p>
+                             <a href="https://drive.google.com/file/d/1HgCA2Fm6WT6ifzurbzpQcKpcXq2P_ZY3/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.cam.2025.116745" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>The main goal of this work is to provide an explicit algorithm for the estimation of the segmental Lebesgue constant, an extension of the nodal Lebesgue constant that arise, for instance, in histopolation problems. With the help of two simple but efficacious lemmas, we reverse the already known technology and sensibly speed up the numerical estimation of such quantities. Results are comparable with the known literature, although cpu time of the presented method is sensibly smaller. It is worth pointing out that the numerical approach is the only known for analyzing the majority of families of supports.</p>
+                            </div>
+                        </article>
+                    </div> 
+
+                    <!-- 2025 Publications -->
+                    <h3 class="year-heading">2025</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Damped Bloch wave propagation in periodic architected viscoelastic materials: a Fourier-based scheme with quasi-Monte Carlo integration</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Francesca Fantoni, Maria Laura De Bellis, Andrea Bacigalupo</p>
+                            <p class="italic">accepted by Int. J. Solids Struct.</p>
+                             <a href="https://drive.google.com/file/d/1ndSAR2GzIs_zg36BpQg6-YlGUi7BybKP/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="#" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>This paper investigates the behavior of microstructured viscoelastic metamaterials with complex topologies, focusing on their wave propagation characteristics, specifically the behavior of damped Bloch waves.  Fourier-based methods are used to solve the governing dynamic equations, taking into account both spatial and temporal damping effects. The study addresses eigenproblems related to Bloch wave dispersion, with a particular emphasis on rational eigenproblems, which are solved using an enhanced derationalization technique previously proposed by the authors. To efficiently approximate the Fourier coefficients, the technique utilizes the quasi-Monte Carlo integration method, which is particularly effective for complex geometries. An illustrative example based on triply periodic minimal surface structures is provided to demonstrate the effectiveness of the proposed approach. The results highlight the potential of these metamaterials for applications in noise reduction, impact resistance, and other advanced engineering fields.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2024 Publications -->
+                    <h3 class="year-heading">2024</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Homogenization of composite materials reinforced with unidirectional fibres with complex curvilinear cross section: a virtual element approach</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Edoardo Artioli, <strong>Giacomo Elefante</strong>, Alvise Sommariva, Marco Vianello</p>
+                            <p class="italic">AIMS Math. Eng., 6(4) (2024) p. 510-535.</p>
+                             <a href="https://drive.google.com/file/d/1VCATSeCCDi3mlVRvEKJZM2TcjqHFzvC4/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.3934/mine.2024021" target="_blank" class="text-blue-600 hover:underline">[DOI]</a> 
+                            <div class="abstract-content">
+                                <p>The paper presents an augmented curvilinear virtual element method to determine homogenized in-plane shear material moduli of long-fibre reinforced composites in the framework of asymptotic homogenization method. The new virtual element combine an exact representation of the curvilinear computational geometry for complex fibre cross section shapes through an innovative two-dimensional cubature suite for NURBS-like polygonal domains. A selection of representative numerical tests supports the accuracy and efficiency of the proposed approach for both doubly periodic and random fibre arrangement with matrix domain. </p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Tchakaloff-like compression of QMC volume and surface integration on the union of balls</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Alvise Sommariva, Marco Vianello</p>
+                            <p class="italic">Journal of Approximation Software, 1, 1 (2024).</p>
+                             <a href="https://arxiv.org/abs/2304.08090" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <!-- <a href="https://doi.org/10.1007/s10092-024-00587-z" target="_blank" class="text-blue-600 hover:underline">[DOI]</a> -->
+                            <div class="abstract-content">
+                                <p>We discuss a bottom-up algorithm for Tchakaloff like compression of Quasi-MonteCarlo (QMC) integration on surfaces that admit an analytic parametrization. </p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Tchakaloff-like compression of QMC volume and surface integration on the union of balls</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Alvise Sommariva, Marco Vianello</p>
+                            <p class="italic">Calcolo 61, 46 (2024).</p>
+                             <a href="https://arxiv.org/abs/2303.01460" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1007/s10092-024-00587-z" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>We present an algorithm for Tchakaloff-like compression of quasi-Monte Carlo volume and surface integration on an arbitrary union of balls, via non-negative least squares. We also provide the corresponding Matlab codes together with several numerical tests.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>A barycentric trigonometric Hermite interpolant via an iterative approach</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong></p>
+                            <p class="italic">J. Comput. Appl. Math. (2024), 115597.</p>
+                             <a href="https://arxiv.org/abs/2206.00469" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.cam.2023.115597" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>In this work we construct an Hermite interpolant starting from basis functions that satisfy a Lagrange property. In fact, we extend and generalise an iterative approach, introduced by Cirillo and Hormann (2018) for the Floater–Hormann family of interpolants. Secondly, we apply this scheme to produce an effective barycentric rational trigonometric Hermite interpolant at general ordered nodes using as basis functions the ones of the trigonometric interpolant introduced by Berrut (1988). For an easy computational construction, we calculate analytically the differentiation matrix. Finally, we conclude with various examples and a numerical study of the convergence at equidistant nodes and conformally mapped nodes.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2023 Publications -->
+                    <h3 class="year-heading">2023</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>More properties of \((\beta,\gamma)\)-Chebyshev functions and points</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong>, Francesco Marchetti, Jean-Zacharie Mariethoz</p>
+                            <p class="italic">J. Math. Anal. Appl. (2023), 127603.</p>
+                             <a href="https://arxiv.org/abs/2305.03370" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.jmaa.2023.127603" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>Recently, \((\beta,\gamma)\)-Chebyshev functions, as well as the corresponding zeros, have been introduced as a generalization of classical Chebyshev polynomials of the first kind and related roots. They consist of a family of orthogonal functions on a subset of \([-1,1]\), which indeed satisfies a three-term recurrence formula. In this paper we present further properties, which are proven to comply with various results about classical orthogonal polynomials. In addition, we prove a conjecture concerning the Lebesgue constant's behavior related to the roots of \((\beta,\gamma)\)-Chebyshev functions in the corresponding orthogonality interval.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Electrically-tunable active metamaterials for damped elastic wave propagation control</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Maria Laura De Bellis, Andrea Bacigalupo</p>
+                            <p class="italic">Int. J. Solids Struct. 276 (2023), 112306.</p>
+                             <a href="https://drive.google.com/file/d/1HmbVk2Y2RW9Xxm91_K4rMIbDXn8wIegV/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.ijsolstr.2023.112306" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>An electrically-tunable metamaterial is herein designed for the active control of damped elastic waves. The periodic device is conceived including both elastic phases and a piezoelectric phase, shunted by a dissipative electric circuit whose impedance/admittance can be adjusted on demand. As a consequence, the frequency band structure of the metamaterial can be modified to meet design requirements, possibly changing over time. A significant issue is that in the presence of a dissipative circuit, the frequency spectra are obtained by solving eigen-problems with rational terms. This circumstance makes the problem particularly difficult to treat, either resorting to analytical or numerical techniques. In this context, a new derationalization strategy is proposed to overcome some limitations of standard approaches. The starting point is an infinite-dimensional rational eigen-problem, obtained by expanding in their Fourier series the periodic terms involved in the governing dynamic equations. A special derationalization is then applied to the truncated eigen-problem. The key idea is exploiting a LU factorization of the matrix collecting the rational terms. The method allows to considerably reduce the size of the problem to solve with respect to available techniques in literature. This strategy is successfully applied to the case of a three-phase metamaterial shunted by a series RLC circuit with rational admittance.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2022 Publications -->
+                    <h3 class="year-heading">2022</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Interpolation with the polynomial kernels</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Wolfgang Erb, Francesco Marchetti, Emma Perracchione, Davide Poggiali, Gabriele Santin</p>
+                            <p class="italic">Dolomites Res. Notes Approx. 15 (2022),  Special Issue dedicated to Stefano De Marchi on the occasion of his 60th birthday, p.45-60.</p>
+                            <a href="https://arxiv.org/abs/2212.07658" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="http://dx.doi.org/10.14658/pupj-drna-2022-4-5" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>The polynomial kernels are widely used in machine learning and they are one of the default choices to develop kernel-based classification and regression models. However, they are rarely used and considered in numerical analysis due to their lack of strict positive definiteness. In particular they do not enjoy the usual property of unisolvency for arbitrary point sets, which is one of the key properties used to build kernel-based interpolation methods. This paper is devoted to establish some initial results for the study of these kernels, and their related interpolation algorithms, in the context of approximation theory. We will first prove necessary and sufficient conditions on point sets which guarantee the existence and uniqueness of an interpolant. We will then study the Reproducing Kernel Hilbert Spaces (or native spaces) of these kernels and their norms, and provide inclusion relations between spaces corresponding to different kernel parameters. With these spaces at hand, it will be further possible to derive generic error estimates which apply to sufficiently smooth functions, thus escaping the native space. Finally, we will show how to employ an efficient stable algorithm to these kernels to obtain accurate interpolants, and we will test them in some numerical experiment. After this analysis several computational and theoretical aspects remain open, and we will outline possible further research directions in a concluding section. This work builds some bridges between kernel and polynomial interpolation, two topics to which the authors, to different extents, have been introduced under the supervision or through the work of Stefano De Marchi. For this reason, they wish to dedicate this work to him in the occasion of his 60th birthday.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>CQMC: an improved code for low-dimensional Compressed Quasi-MonteCarlo cubature</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600"><strong>Giacomo Elefante</strong>, Marco Vianello, Alvise Sommariva</p>
+                            <p class="italic">Dolomites Res. Notes Approx. 15 (2022), Special Issue SA2022, p. 92-100.</p>
+                            <a href="https://www.researchgate.net/publication/361186156_CQMC_an_improved_code_for_low-dimensional_Compressed_Quasi-MonteCarlo_cubature" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="http://dx.doi.org/10.14658/pupj-drna-2022-2-8" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>An improved version of Compressed Quasi-MonteCarlo cubature (CQMC) on large low-discrepancy samples is implemented, on 2D and 3D regions with complex shape. The algorithms rests on the concept of Tchakaloff set and on NNLS solution of a sequence of “small” moment-matching systems. Examples of area and volume integration are provided.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>A linear barycentric rational interpolant on starlike domains</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Jean-Paul Berrut, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">Electron. Trans. Numer. Anal. 55 (2022), 726-743.</p>
+                            <a href="https://arxiv.org/abs/2104.09246" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1553/etna_vol55s726" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>When an approximant is accurate on an interval, it is only natural to try to extend it to multi-dimensional domains. In the present article we make use of the fact that linear rational barycentric interpolants converge rapidly toward analytic and several-times differentiable functions to interpolate them on two-dimensional starlike domains parametrized in polar coordinates. In the radial direction, we engage interpolants at conformally shifted Chebyshev nodes, which converge exponentially for analytic functions. In the circular direction, we deploy linear rational trigonometric barycentric interpolants, which converge similarly rapidly for periodic functions but now for conformally shifted equispaced nodes. We introduce a variant of a tensor-product interpolant of the above two schemes and prove that it converges exponentially for two-dimensional analytic functions–up to a logarithmic factor–and with an order limited only by the order of differentiability for real functions (provided that the boundary enjoys the same order of differentiability). Numerical examples confirm that the shifts permit one to reach a much higher accuracy with significantly fewer nodes, a property which is especially important in several dimensions.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Polynomial mapped bases: theory and applications</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong>, Elisa Francomano, Francesco Marchetti</p>
+                            <p class="italic">Commun. Appl. Ind. Math. 13 (2022), 1, p. 1-9.</p>
+                            <a href="https://arxiv.org/abs/2204.01555" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.2478/caim-2022-0001" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>In this paper, we collect the basic theory and the most important applications of a novel technique that has shown to be suitable for scattered data interpolation, quadrature, bio-imaging reconstruction. The method relies on polynomial mapped bases allowing, for instance, to incorporate data or function discontinuities in a suitable mapping function. The new technique substantially mitigates the Runge's and Gibbs effects.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2021 Publications -->
+                    <h3 class="year-heading">2021</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Stable discontinuous mapped bases: the Gibbs-Runge-Avoiding Stable Polynomial Approximation (GRASPA) method</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong>, Francesco Marchetti</p>
+                            <p class="italic">Comp. Appl. Math. 40 (2021), 299 </p>
+                            <a href="https://arxiv.org/abs/2105.09661" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1007/s40314-021-01688-z" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>The mapped bases or Fake Nodes Approach (FNA), introduced in De Marchi et al. (J Comput Appl Math 364:112347, 2020c), allows to change the set of nodes without the need of resampling the function. Such scheme has been successfully applied for mitigating the Runge's phenomenon, using the S-Runge map, or the Gibbs phenomenon, with the S-Gibbs map. However, the original S-Gibbs suffers of a subtle instability when the interpolant is constructed at equidistant nodes, due to the Runge’sphenomenon. Here, we propose a novel approach, termed Gibbs–Runge-Avoiding Stable Polynomial Approximation (GRASPA), where both Runge’s and Gibbs phenomena are mitigated simultaneously. After providing a theoretical analysis of the Lebesgue constant associated with the mapped nodes, we test the new approach by performing various numerical experiments which confirm the theoretical findings.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>On \((\beta,\gamma)\)-Chebyshev functions and points of the interval</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong>, Francesco Marchetti</p>
+                            <p class="italic">J. Approx. Theory 271 (2021), 105634 </p>
+                            <a href="https://drive.google.com/file/d/15rPE9McKZec_I3x-ZhjiU2Ui5M-p5SV2/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.jat.2021.105634" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>In this paper, we introduce the class of \((\beta,\gamma)\)-Chebyshev functions and corresponding points, which can be seen as a family of generalized Chebyshev polynomials and points. For the \((\beta,\gamma)\)-Chebyshev functions, we prove that they are orthogonal in certain subintervals of \([-1,1]\) with respect to a weighted arc-cosine measure. In particular we investigate the cases where they become polynomials, deriving new results concerning classical Chebyshev polynomials of first kind. Besides, we show that subsets of Chebyshev and Chebyshev-Lobatto points are instances of \((\beta,\gamma)\)-Chebyshev points. We also study the behavior of the Lebesgue constants of the polynomial interpolant at these points  on varying the parameters \(\beta\) and \(\gamma\).</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Bounding the Lebesgue constant for a barycentric rational trigonometric interpolant at periodic well-spaced nodes</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Jean-Paul Berrut, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">J. Comput. Appl. Math. 398 (2021), 113664</p>
+                            <a href="https://drive.google.com/file/d/18pZhHQabjqOjiPUMwtecTskTgsb3C2a_/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.cam.2021.113664" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>A well-known result in linear approximation theory states that the norm of the operator, known as the Lebesgue constant, of polynomial interpolation on an interval grows only logarithmically with the number of nodes, when these are Chebyshev points. Results like this are important for studying the conditioning of the approximation. A cosine change of variable shows that polynomial interpolation at Chebyshev points is just the special case for even functions of trigonometric interpolation (on the circle) at equidistant points. The Lebesgue constant of the latter grows logarithmically, also for functions with no particular symmetry. In the present work, we show that a linear rational generalization of the trigonometric interpolant enjoys a logarithmically growing Lebesgue constant for more general sets of nodes, namely periodic well-spaced ones, patterned after those introduced for an interval by Bos et al. (2013) few years ago. An important special case are conformally shifted equispaced points, for which the rational trigonometric interpolant is known to converge exponentially.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Quadrature at fake nodes</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong>, Emma Perracchione, Davide Poggiali</p>
+                            <p class="italic">Dolomites Res. Notes Approx. 14 (2021), Special Issue MATA2020, p. 39-45</p>
+                            <a href="https://drive.google.com/file/d/1WkEEBxkYXOMIg-fY7RDo0RkrEyCon6tK/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="http://dx.doi.org/10.14658/pupj-drna-2021-2-6" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>We investigate the use of the so-called mapped bases or fake nodes approach in the framework of numerical integration. We show that such approach is able to mitigate the Gibbs phenomenon when integrating functions with steep gradients. Moreover, focusing on the optimal properties of the Chebyshev-Lobatto nodes, we are able to analytically compute the quadrature weights of the fake Chebyshev-Lobatto nodes. Such weights, quite surprisingly, coincide with the composite trapezoidal rule. Numerical experiments show the effectiveness of the proposed method especially for mitigating the Gibbs phenomenon without the need of resampling the given function.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- 2020 Publications -->
+                    <h3 class="year-heading">2020</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Treating the Gibbs phenomenon in barycentric rational interpolation via the S-Gibbs algorithm</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Jean-Paul Berrut, Stefano De Marchi, <strong>Giacomo Elefante</strong>, Francesco Marchetti</p>
+                            <p class="italic">Appl. Math. Letters 103 (2020), 106196</p>
+                            <a href="https://drive.google.com/file/d/1VAqYFulrDcCQNNUv_JXcyatqDSx2VoQX/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.aml.2019.106196" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>In this work, we extend the so-called mapped bases or fake nodes approach to the barycentric rational interpolation of Floater–Hormann and to AAA approximants. More precisely, we focus on the reconstruction of discontinuous functions by the S-Gibbs algorithm introduced in De Marchi et al. (2020). Numerical tests show that it yields an accurate approximation of discontinuous functions.</p>
+                            </div>
+                        </article>
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>A periodic map for linear barycentric rational trigonometric interpolation</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Jean-Paul Berrut, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">Appl. Math. Comput. 371 (2020), 124924</p>
+                            <a href="https://drive.google.com/file/d/1EiClXoHYUcOxWDA0qkmWKb8o2xuxIREV/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.amc.2019.124924" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>Consider the set of equidistant nodes in \([0,2\pi)\), $$\theta_k := k \cdot \frac{2\pi}{n},\qquad k=0,\dots,n-1.$$ For an arbitrary \(2\pi\)-periodic function \(f(\theta)\), the barycentric formula for the corresponding trigonometric interpolant between the \(\theta_k\)'s is $$ T[f](\theta)=\frac{\sum_{k=0}^{n-1} (-1)^k \,\mathrm{cst}(\frac{\theta-\theta_k}{2}) \,f(\theta_k)}{\sum_{k=0}^{n-1} (-1)^k \,\mathrm{cst}(\frac{\theta-\theta_k}{2})},$$ where \(\mathrm{cst}(\cdot):=\mathrm{ctg}(\cdot)\) if the number of nodes $n$ is even, and \(\mathrm{cst}(\cdot):=\csc(\cdot)\) if \(n\) is odd. Baltensperger [3] has shown that the corresponding barycentric rational trigonometric interpolant given by the right-hand side of the above equation for arbitrary nodes introduced in [9] converges exponentially toward \(f\) when the nodes are the images of the \(\theta_k\)'s under a periodic conformal map. In the present work, we present a simple periodic conformal map which accumulates nodes in the neighborhood of an arbitrarily located front, as well as its extension to several fronts. Despite its simplicity, this map allows for a very accurate approximation of smooth periodic functions with steep gradients.</p>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <!-- 2018 Publications -->
+                    <h3 class="year-heading">2018</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>Quasi-Monte Carlo integration on manifolds with mapped low-discrepancy points and greedy minimal Riesz <i>s</i>-energy points</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Stefano De Marchi, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">Appl. Num. Math. 127, 5, (2018) p. 110-124</p>
+                            <a href="https://drive.google.com/file/d/1WyV3R9_7OJKusPUtiyy8jVG1yMpb0-p9/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                            <a href="https://doi.org/10.1016/j.apnum.2017.12.017" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>In this paper we consider two sets of points for Quasi-Monte Carlo integration on two-dimensional manifolds. The first is the set of mapped low-discrepancy sequence by a measure preserving map, from a rectangle to the manifold. The second is the greedy minimal Riesz s-energy points extracted from a suitable discretization of the manifold. Thanks to the Poppy-seed Bagel Theorem we know that the classes of points with minimal Riesz s-energy, under suitable assumptions, are asymptotically uniformly distributed with respect to the normalized Hausdorff measure. They can then be considered as quadrature points on manifolds via the Quasi-Monte Carlo (QMC) method. On the other hand, we do not know if the greedy minimal Riesz s-energy points are a good choice to integrate functions with the QMC method on manifolds. Through theoretical considerations, by showing some properties of these points and by numerical experiments, we attempt to answer to these questions.</p>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <!-- 2016 Publications -->
+                    <h3 class="year-heading">2016</h3>
+                    <div class="space-y-6">
+                        <article>
+                            <button class="abstract-toggle-button">
+                                <span>A New Quasi-Monte Carlo Technique Based on Nonnegative Least Squares and Approximate Fekete Points</span>
+                                <span class="icon">&rsaquo;</span>
+                            </button>
+                            <p class="text-md text-gray-600">Claudia Bittante, Stefano De Marchi, <strong>Giacomo Elefante</strong></p>
+                            <p class="italic">Numer. Math. TMA. 9, 4, (2016) p. 640-663.</p>
+                             <a href="https://drive.google.com/file/d/1rv74fz6DUUVBY_6nrONQL9m4WLQUJoA2/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[PDF]</a>
+                             <a href="https://doi.org/10.4208/nmtma.2016.m1516" target="_blank" class="text-blue-600 hover:underline">[DOI]</a>
+                            <div class="abstract-content">
+                                <p>The computation of integrals in higher dimensions and on general domains, when no explicit cubature rules are known, can be ”easily” addressed by means of the quasi-Monte Carlo method. The method, simple in its formulation, becomes computationally inefficient when the space dimension is growing and the integration domain is particularly complex. In this paper we present two new approaches to the quasi-Monte Carlo method for cubature based on nonnegative least squares and approximate Fekete points. The main idea is to use less points and especially good points for solving the system of the moments. Good points are here intended as points with good interpolation properties, due to the strict connection between interpolation and cubature. Numerical experiments show that, in average, just a tenth of the points should be used mantaining the same approximation order of the quasi-Monte Carlo method. The method has been satisfactory applied to 2 and 3-dimensional problems on quite complex domains.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CV Section -->
+            <section id="cv" class="page-section">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Curriculum Vitae</h2>
+                    <p class="mb-4">You can view my full CV below or download it <a href="https://drive.google.com/file/d/15C3zLkOkn0SuldwMqlur-PA9I7bmHxLj/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">here</a>.</p>
+                    <div class="cv-embed border rounded-lg shadow-sm">
+                        <iframe src="https://drive.google.com/file/d/15C3zLkOkn0SuldwMqlur-PA9I7bmHxLj/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Miscellanea Section -->
+            <section id="miscellanea" class="page-section">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Miscellanea</h2>
+                    <p class="mb-4">This section contains various items of interest, such as software I've developed (see GitHub actually), or teaching materials.</p>
+					<h3 class="text-xl font-semibold mb-3">Teaching material</h3>
+                                <div class="space-y-2">
+                                    <p>
+                                    <strong>Lecture notes on Monte Carlo and quasi-Monte Carlo integration</strong>, PhD course Y.2025 - <a href="https://drive.google.com/file/d/1XImd3QfD6RklF4075Fs4Z3R4Di8rS7Fv/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">[Download]</a>
+                                    </p>
+								</div>
+                     <!--<ul class="list-disc list-inside space-y-2">
+                        <li><a href="#" class="text-blue-600 hover:underline">Link to a recent talk on YouTube</a></li>
+                        <li><a href="#" class="text-blue-600 hover:underline">GitHub repository for a research project</a></li>
+                        <li><a href="#" class="text-blue-600 hover:underline">Syllabus for a course I taught</a></li>
+                        <li>A collection of useful resources for students in my field.</li>
+                    </ul> -->
+                </div>
+            </section>
+
+            <!-- About Me Section -->
+            <section id="about" class="page-section">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h2 class="text-2xl font-bold mb-4">Useful links</h2>
+                    <p class="mb-4">
+                         <a href="https://arxiv.org/search/?searchtype=author&query=Elefante%2C+G" target="_blank" class="text-blue-600 hover:underline">ArXiv</a>
+                    </p>
+                     <p class="mb-4">
+                         <a href="https://sites.google.com/view/caa-padova-verona/home" target="_blank" class="text-blue-600 hover:underline">CAA Group</a>
+                    </p>
+					<p class="mb-4">
+                         <a href="http://www.umi-taa.dmi.unipg.it/index.html" target="_blank" class="text-blue-600 hover:underline">UMI-TAA group</a>
+                    </p>
+                    
+                    <!-- Office Location Section -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4">Office Location</h3>
+                        <p class="mb-4">You can find my office at USI Lugano Campus Est Sector D. Office: D5.22 at the fifth floor</p>
+                        
+                        <!-- Updated Google Maps Embed -->
+                        <div class="map-container mb-4">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.973267687633!2d8.961817277416975!3d46.011725869266854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478433b87d70fde5%3A0xf761ef345b31a8cb!2sCampus%20Universitario%20USI%2FSUPSI!5e0!3m2!1sit!2sch!4v1751494856018!5m2!1sit!2sch" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <p class="text-sm text-gray-600">
+                            <strong>Address:</strong> IDSIA<br>
+                            Via la Santa 1, 6900 Lugano, Switzerland<br>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center text-gray-500 mt-12">
+            <p>&copy; 2025 Giacomo Elefante.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.page-section');
+            const pastConferencesLink = document.getElementById('past-conferences-link');
+            const homeLinks = document.querySelectorAll('.home-link');
+            const abstractToggleButtons = document.querySelectorAll('.abstract-toggle-button'); // Get all abstract toggle buttons
+
+            function showSection(hash) {
+                const sectionId = (hash && document.querySelector(hash)) ? hash.substring(1) : 'home';
+                
+                sections.forEach(section => {
+                    section.classList.toggle('active', section.id === sectionId);
+                });
+
+                navLinks.forEach(link => {
+                    const linkHash = new URL(link.href).hash;
+                    link.classList.toggle('active', linkHash === '#' + sectionId);
+                });
+            }
+
+            function handleLinkClick(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                // Changed from history.pushState to directly setting window.location.hash
+                // This resolves the SecurityError in certain iframe environments.
+                window.location.hash = targetId; 
+                showSection(targetId);
+            }
+
+            // Handle main navigation clicks
+            navLinks.forEach(link => link.addEventListener('click', handleLinkClick));
+            
+            // Handle specific link for past conferences
+            if(pastConferencesLink) {
+                pastConferencesLink.addEventListener('click', handleLinkClick);
+            }
+
+            // Handle "Back to Home" links
+            homeLinks.forEach(link => link.addEventListener('click', handleLinkClick));
+
+            // Handle browser back/forward buttons
+            window.addEventListener('popstate', function() {
+                showSection(window.location.hash);
+            });
+            
+            // Show initial section based on URL hash or default to home
+            showSection(window.location.hash);
+
+            // Add event listeners for abstract toggle buttons
+            abstractToggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Find the abstract content div (it's the next sibling after the links)
+                    // The structure is: button, p (authors), p (journal), a (pdf), a (doi/link), div (abstract)
+                    // So we need to traverse 4 nextSibling elements to get to the div.
+                    let abstractContent = this.nextElementSibling; // points to author <p>
+                    abstractContent = abstractContent.nextElementSibling; // points to journal <p>
+                    abstractContent = abstractContent.nextElementSibling; // points to PDF <a>
+                    abstractContent = abstractContent.nextElementSibling; // points to DOI/Link <a>
+                    abstractContent = abstractContent.nextElementSibling; // points to abstract <div>
+
+                    // Make sure we found the correct element and it has the 'abstract-content' class
+                    if (abstractContent && abstractContent.classList.contains('abstract-content')) {
+                        const isCurrentlyVisible = abstractContent.style.display === 'block';
+                        abstractContent.style.display = isCurrentlyVisible ? 'none' : 'block';
+                        button.classList.toggle('active', !isCurrentlyVisible); // Toggle 'active' class on button for icon rotation
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
