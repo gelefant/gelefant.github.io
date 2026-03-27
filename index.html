@@ -9,104 +9,181 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Style for the active navigation link */
-        .nav-link.active {
-            color: #1D4ED8; /* A deep blue color */
-            font-weight: 500;
-            border-bottom: 2px solid #1D4ED8;
-        }
-        .nav-link {
-            padding-bottom: 4px;
-        }
-        /* Hide sections by default */
-        .page-section {
-            display: none;
-        }
-        /* Show the active section */
-        .page-section.active {
-            display: block;
-        }
-        /* Ensure the embedded PDF is responsive */
-        .cv-embed {
-            position: relative;
-            padding-bottom: 129.4%; /* Aspect ratio for A4 paper (297/210 * 100) */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-        }
-        .cv-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        /* Style for year headings in publications */
-        .year-heading {
-            font-size: 1.25rem; /* text-xl equivalent */
-            font-weight: 600;
-            color: #374151; /* gray-700 */
-            margin: 1.5rem 0 1rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #d1d5db; /* gray-300 */
-        }
-        /* Style for the map container */
-        .map-container {
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        /* Styles for the abstract dropdown */
-        .abstract-content {
-            display: none; /* Hidden by default */
-            margin-top: 0.75rem;
-            padding: 1rem;
-            background-color: #f3f4f6; /* gray-100 */
-            border-left: 4px solid #1D4ED8; /* blue-700 */
-            border-radius: 0.5rem;
-            font-size: 0.95rem;
-            color: #4b5563; /* gray-700 */
-            line-height: 1.6;
-            box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1); /* subtle inner shadow */
-            animation: fadeIn 0.3s ease-out; /* Add a fade-in animation */
-        }
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    /* Style for the active navigation link */
+    .nav-link.active {
+        color: #1D4ED8; /* A deep blue color */
+        font-weight: 500;
+        border-bottom: 2px solid #1D4ED8;
+    }
+    .nav-link {
+        padding-bottom: 4px;
+    }
+    /* Hide sections by default */
+    .page-section {
+        display: none;
+    }
+    /* Show the active section */
+    .page-section.active {
+        display: block;
+    }
+    /* Ensure the embedded PDF is responsive */
+    .cv-embed {
+        position: relative;
+        padding-bottom: 129.4%; /* Aspect ratio for A4 paper (297/210 * 100) */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .cv-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    /* Style for year headings in publications */
+    .year-heading {
+        font-size: 1.25rem; /* text-xl equivalent */
+        font-weight: 600;
+        color: #374151; /* gray-700 */
+        margin: 1.5rem 0 1rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #d1d5db; /* gray-300 */
+    }
+    /* Style for the map container */
+    .map-container {
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    /* Styles for the abstract dropdown */
+    .abstract-content {
+        display: none; /* Hidden by default */
+        margin-top: 0.75rem;
+        padding: 1rem;
+        background-color: #f3f4f6; /* gray-100 */
+        border-left: 4px solid #1D4ED8; /* blue-700 */
+        border-radius: 0.5rem;
+        font-size: 0.95rem;
+        color: #4b5563; /* gray-700 */
+        line-height: 1.6;
+        box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.1); /* subtle inner shadow */
+        animation: fadeIn 0.3s ease-out; /* Add a fade-in animation */
+    }
 
-        /* Keyframe animation for fading in */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* Keyframe animation for fading in */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .abstract-toggle-button {
-            cursor: pointer;
-            text-align: left;
-            width: 100%;
-            display: flex; /* Use flexbox for icon alignment */
-            align-items: center;
-            justify-content: space-between; /* Space between title and icon */
-            background: none;
-            border: none;
-            padding: 0;
-            font-size: 1.25rem; /* text-xl equivalent */
-            font-weight: 600;
-            color: #1a202c; /* Text color for the title */
-            transition: color 0.2s ease-in-out;
-        }
-        .abstract-toggle-button:hover {
-            color: #2563eb; /* blue-600 */
-        }
-        .abstract-toggle-button .icon {
-            margin-left: 0.5rem;
-            transition: transform 0.2s ease-in-out;
-        }
-        .abstract-toggle-button.active .icon {
-            transform: rotate(90deg); /* Rotate icon when active */
-        }
-    </style>
+    .abstract-toggle-button {
+        cursor: pointer;
+        text-align: left;
+        width: 100%;
+        display: flex; /* Use flexbox for icon alignment */
+        align-items: center;
+        justify-content: space-between; /* Space between title and icon */
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: 1.25rem; /* text-xl equivalent */
+        font-weight: 600;
+        color: #1a202c; /* Text color for the title */
+        transition: color 0.2s ease-in-out;
+    }
+    .abstract-toggle-button:hover {
+        color: #2563eb; /* blue-600 */
+    }
+    .abstract-toggle-button .icon {
+        margin-left: 0.5rem;
+        transition: transform 0.2s ease-in-out;
+    }
+    .abstract-toggle-button.active .icon {
+        transform: rotate(90deg); /* Rotate icon when active */
+    }
+
+    /* Stili per l'animazione del Toggle Switch */
+    #compact-toggle:checked ~ .toggle-bg {
+        background-color: #1D4ED8; /* Colore blu attivo */
+    }
+    #compact-toggle:checked ~ .toggle-dot {
+        transform: translateX(100%);
+    }
+
+    /* ===== NUOVO LAYOUT MODALITÀ COMPATTA ===== */
+    
+    /* Nasconde i titoli macro-anno */
+    .compact-mode .year-heading {
+        display: none !important;
+    }
+    
+    /* Annulla la classe space-y-6 di Tailwind in modalità compatta per evitare margini irregolari */
+    .compact-mode .space-y-6 > * {
+        margin-top: 0 !important;
+    }
+    .compact-mode .space-y-6 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Rimuoviamo flexbox e usiamo un layout a blocchi/inline per far scorrere i link accanto al titolo */
+    .compact-mode article {
+        display: block; 
+        margin-bottom: 15px !important; /* Spaziatura fissa in fondo ad ogni articolo */
+    }
+
+    /* 1. Titolo: si comporta come semplice testo (inline) */
+    .compact-mode .abstract-toggle-button {
+        display: inline; /* Permette al testo e ai link successivi di affiancarsi naturalmente */
+        pointer-events: none; 
+        font-size: 1.05rem; 
+        line-height: 1.4;
+        margin-right: 8px; /* Spazio tra l'ultima parola del titolo e il primo link */
+    }
+    
+    /* Forza anche lo span interno al bottone a comportarsi in linea */
+    .compact-mode .abstract-toggle-button > span:first-child {
+        display: inline; 
+    }
+
+    .compact-mode .abstract-toggle-button .icon,
+    .compact-mode .abstract-content {
+        display: none !important; /* Nasconde freccia e abstract */
+    }
+
+    /* 2. Link PDF e DOI: si affiancano naturalmente alla fine del testo del titolo */
+    .compact-mode article > a {
+        display: inline-block;
+        margin-right: 6px; /* Spazio tra un link e l'altro */
+        font-size: 0.9rem;
+        white-space: nowrap; /* Mantiene unita la scritta (es. [PDF]) per evitare che vada a capo a metà */
+    }
+
+    /* 3. Autori: vanno a capo perché forzati come blocchi */
+    .compact-mode article p.text-md {
+        display: block; /* Forza ad andare a capo sotto la riga del titolo/link */
+        margin-top: 4px;
+        font-size: 0.95rem;
+    }
+
+    /* 4. Rivista: va a capo sotto agli autori */
+    .compact-mode article p.italic {
+        display: block;
+        margin-top: 0;
+        font-size: 0.9rem;
+    }
+
+    /* Rimuove il margine inferiore dall'ultimo articolo della lista generale */
+    .compact-mode .space-y-6:last-of-type article:last-child {
+        margin-bottom: 0 !important;
+    }
+</style>
     <title>MathJax Example</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -384,7 +461,19 @@
             <!-- Publications Section -->
             <section id="publications" class="page-section">
                  <div class="bg-gray-50 p-6 rounded-lg">
-                    <h2 class="text-2xl font-bold mb-6">Publications</h2>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
+    <h2 class="text-2xl font-bold mb-2 sm:mb-0">Publications</h2>
+    
+    <!-- Toggle per Compact View -->
+    <label for="compact-toggle" class="flex items-center cursor-pointer">
+        <span class="mr-3 text-sm font-medium text-gray-700">Compact View</span>
+        <div class="relative">
+            <input type="checkbox" id="compact-toggle" class="sr-only">
+            <div class="block bg-gray-300 w-10 h-6 rounded-full shadow-inner transition toggle-bg"></div>
+            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform toggle-dot"></div>
+        </div>
+    </label>
+</div>
 <!---                    <!- 2024 Publications ->
                     <h3 class="year-heading">2022</h3>
                     <div class="space-y-6">
@@ -794,77 +883,85 @@
         </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('.page-section');
-            const pastConferencesLink = document.getElementById('past-conferences-link');
-            const homeLinks = document.querySelectorAll('.home-link');
-            const abstractToggleButtons = document.querySelectorAll('.abstract-toggle-button'); // Get all abstract toggle buttons
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.page-section');
+        const pastConferencesLink = document.getElementById('past-conferences-link');
+        const homeLinks = document.querySelectorAll('.home-link');
+        const abstractToggleButtons = document.querySelectorAll('.abstract-toggle-button');
 
-            function showSection(hash) {
-                const sectionId = (hash && document.querySelector(hash)) ? hash.substring(1) : 'home';
-                
-                sections.forEach(section => {
-                    section.classList.toggle('active', section.id === sectionId);
-                });
-
-                navLinks.forEach(link => {
-                    const linkHash = new URL(link.href).hash;
-                    link.classList.toggle('active', linkHash === '#' + sectionId);
-                });
-            }
-
-            function handleLinkClick(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                // Changed from history.pushState to directly setting window.location.hash
-                // This resolves the SecurityError in certain iframe environments.
-                window.location.hash = targetId; 
-                showSection(targetId);
-            }
-
-            // Handle main navigation clicks
-            navLinks.forEach(link => link.addEventListener('click', handleLinkClick));
-            
-            // Handle specific link for past conferences
-            if(pastConferencesLink) {
-                pastConferencesLink.addEventListener('click', handleLinkClick);
-            }
-
-            // Handle "Back to Home" links
-            homeLinks.forEach(link => link.addEventListener('click', handleLinkClick));
-
-            // Handle browser back/forward buttons
-            window.addEventListener('popstate', function() {
-                showSection(window.location.hash);
+        function showSection(hash) {
+            const sectionId = (hash && document.querySelector(hash)) ? hash.substring(1) : 'home';
+            sections.forEach(section => {
+                section.classList.toggle('active', section.id === sectionId);
             });
-            
-            // Show initial section based on URL hash or default to home
+            navLinks.forEach(link => {
+                const linkHash = new URL(link.href).hash;
+                link.classList.toggle('active', linkHash === '#' + sectionId);
+            });
+        }
+
+        function handleLinkClick(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            window.location.hash = targetId;
+            showSection(targetId);
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', handleLinkClick);
+        });
+
+        if(pastConferencesLink) {
+            pastConferencesLink.addEventListener('click', handleLinkClick);
+        }
+
+        homeLinks.forEach(link => {
+            link.addEventListener('click', handleLinkClick);
+        });
+
+        window.addEventListener('popstate', function() {
             showSection(window.location.hash);
+        });
 
-            // Add event listeners for abstract toggle buttons
-            abstractToggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Find the abstract content div (it's the next sibling after the links)
-                    // The structure is: button, p (authors), p (journal), a (pdf), a (doi/link), div (abstract)
-                    // So we need to traverse 4 nextSibling elements to get to the div.
-                    let abstractContent = this.nextElementSibling; // points to author <p>
-                    abstractContent = abstractContent.nextElementSibling; // points to journal <p>
-                    abstractContent = abstractContent.nextElementSibling; // points to PDF <a>
-                    abstractContent = abstractContent.nextElementSibling; // points to DOI/Link <a>
-                    abstractContent = abstractContent.nextElementSibling; // points to abstract <div>
+        showSection(window.location.hash);
 
-                    // Make sure we found the correct element and it has the 'abstract-content' class
-                    if (abstractContent && abstractContent.classList.contains('abstract-content')) {
-                        const isCurrentlyVisible = abstractContent.style.display === 'block';
-                        abstractContent.style.display = isCurrentlyVisible ? 'none' : 'block';
-                        button.classList.toggle('active', !isCurrentlyVisible); // Toggle 'active' class on button for icon rotation
-                    }
-                });
+        abstractToggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                let abstractContent = this.nextElementSibling; 
+                abstractContent = abstractContent.nextElementSibling; 
+                abstractContent = abstractContent.nextElementSibling; 
+                abstractContent = abstractContent.nextElementSibling; 
+                abstractContent = abstractContent.nextElementSibling; 
+                
+                if (abstractContent && abstractContent.classList.contains('abstract-content')) {
+                    const isCurrentlyVisible = abstractContent.style.display === 'block';
+                    abstractContent.style.display = isCurrentlyVisible ? 'none' : 'block';
+                    this.classList.toggle('active', !isCurrentlyVisible);
+                }
             });
         });
-    </script>
+
+        // ==========================================
+        // GESTIONE VISUALIZZAZIONE COMPATTA
+        // ==========================================
+        const compactToggle = document.getElementById('compact-toggle');
+        const publicationsSection = document.getElementById('publications');
+
+        if(compactToggle) {
+            compactToggle.addEventListener('change', function() {
+                if(this.checked) {
+                    publicationsSection.classList.add('compact-mode');
+                } else {
+                    publicationsSection.classList.remove('compact-mode');
+                }
+            });
+        }
+        // ==========================================
+
+    });
+</script>
 
 </body>
 </html>
