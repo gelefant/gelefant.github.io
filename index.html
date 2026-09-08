@@ -117,6 +117,15 @@
 
     /* ===== NUOVO LAYOUT MODALITÀ COMPATTA ===== */
     
+	.compact-mode article .abstract-toggle-button[data-number]::before {
+            content: attr(data-number);
+            font-weight: normal;
+            color: #4b5563;
+            margin-right: 0.4rem;
+            display: inline;
+            vertical-align: baseline;
+        }
+	
     /* Nasconde i titoli macro-anno */
     .compact-mode .year-heading {
         display: none !important;
@@ -135,21 +144,23 @@
     /* Rimuoviamo flexbox e usiamo un layout a blocchi/inline per far scorrere i link accanto al titolo */
     .compact-mode article {
         display: block; 
-        margin-bottom: 15px !important; /* Spaziatura fissa in fondo ad ogni articolo */
+        margin-bottom: 14px !important; /* Spaziatura fissa in fondo ad ogni articolo */
     }
 
     /* 1. Titolo: si comporta come semplice testo (inline) */
     .compact-mode .abstract-toggle-button {
-        display: inline; /* Permette al testo e ai link successivi di affiancarsi naturalmente */
-        pointer-events: none; 
-        font-size: 1.05rem; 
-        line-height: 1.4;
-        margin-right: 8px; /* Spazio tra l'ultima parola del titolo e il primo link */
-    }
+            display: inline !important;
+            width: auto !important;
+            pointer-events: none; 
+            font-size: 1.02rem; 
+            line-height: 1.4;
+            margin-right: 6px !important;
+            vertical-align: baseline;
+        }
     
     /* Forza anche lo span interno al bottone a comportarsi in linea */
     .compact-mode .abstract-toggle-button > span:first-child {
-        display: inline; 
+        display: inline !important; 
     }
 
     .compact-mode .abstract-toggle-button .icon,
@@ -161,7 +172,7 @@
     .compact-mode article > a {
         display: inline-block;
         margin-right: 6px; /* Spazio tra un link e l'altro */
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         white-space: nowrap; /* Mantiene unita la scritta (es. [PDF]) per evitare che vada a capo a metà */
     }
 
@@ -169,14 +180,14 @@
     .compact-mode article p.text-md {
         display: block; /* Forza ad andare a capo sotto la riga del titolo/link */
         margin-top: 4px;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
     /* 4. Rivista: va a capo sotto agli autori */
     .compact-mode article p.italic {
         display: block;
         margin-top: 0;
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     /* Rimuove il margine inferiore dall'ultimo articolo della lista generale */
@@ -487,7 +498,7 @@
             <!-- Publications Section -->
             <section id="publications" class="page-section">
                  <div class="bg-gray-50 p-6 rounded-lg">
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 border-b border-gray-200 pb-4">
     <h2 class="text-2xl font-bold mb-2 sm:mb-0">Publications</h2>
     
     <!-- Toggle per Compact View -->
@@ -942,6 +953,17 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+		const articles = document.querySelectorAll('#publications article');
+            const totalArticles = articles.length;
+            
+            articles.forEach((article, index) => {
+                // index 0 is top (newest), index totalArticles-1 is bottom (oldest)
+                const paperNumber = totalArticles - index;
+                article.setAttribute('data-number', `${paperNumber}.`);
+                const btn = article.querySelector('.abstract-toggle-button');
+                if (btn) btn.setAttribute('data-number', `${paperNumber}.`);
+            });
+	
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('.page-section');
         const pastConferencesLink = document.getElementById('past-conferences-link');
